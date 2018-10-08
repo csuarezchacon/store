@@ -12,11 +12,16 @@
 	<script type="text/javascript" src="index_module.js"></script>
 	<script type="text/javascript" src="index_config.js"></script>
 
+	<script type="text/javascript" src="w3/directive/cart/cart_module.js"></script>
+	<script type="text/javascript" src="w3/directive/cart/cart_directive.js"></script>
+	<script type="text/javascript" src="w3/directive/cart/cart_controller.js"></script>
+
 	<title>Lanani - Tienda Virtual</title>
 </head>
 <body>
 	<div ng-app="index-module">
 		<ul>
+			<li ui-sref="store">store</li>
 			<li ui-sref="cart">cart</li>
 		</ul>
 		<div ui-view></div>
