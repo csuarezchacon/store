@@ -8,7 +8,7 @@
 			templateUrl: 'w3/pages/store/store.html'
 		}).state('cart', {
 			url: '/cart',
-			templateUrl: 'w3/directive/cart/cart.html'
+			template: '<cart></cart>'
 		});
   }]);
 })();

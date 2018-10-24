@@ -1,5 +1,6 @@
 (function () {
 	angular.module('index-module', [
-		'ui.router'
+		'ui.router',
+		'cart-module'
 		]);
 })();
