@@ -1,28 +1,40 @@
 (function () {
-	angular.module('cart-module').controller('cartController', [ '$http', function($http) {
+	angular.module('cart-module').controller('cartController', [ '$http', '$q', function($http, $q) {
 		var vm = this;
 		vm.cart = {};
 
-		vm.openCart = function() {
-			getCart().then(function(rs) {
-				alert("holo");
-				/*if(rs) {
-					alert("ya existe");
-				} else {
-					vm.createCart();
-				}*/
-			});
-		};
-
-		function getCart() {
+		vm.addProduct = function() {
 			$http({
-				url: "model/utils/cart-status_get.php",
+				url: "model/utils/product_add.php",
 				method: "GET",
 				headers: "{'Content-Type': 'application/x-www-form-urlencoded'}" 
 			}).success(function(data, status, header, config) {
-				return data;
+				vm.cart = data;
 			});
-		}
+		};
+
+		vm.openCart = function() {
+			getCart().then(function(rs) {
+				if(rs) {
+					alert("ya existe");
+				} else {
+					vm.createCart();
+				}
+			});
+		};
+
+		var getCart = function() {
+			var deferred = $q.defer();
+			$http({
+				url: "model/utils/cart-status_get.php",
+				method: "GET"
+			}).success(function(data, status, header, config) {
+				deferred.resolve(data);
+			}).error(function(data, status, header, config) {
+				deferred.reject(data);
+			});
+			return deferred.promise;
+		};
 
 		vm.createCart = function() {
 			$http({

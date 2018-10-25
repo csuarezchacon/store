@@ -2,8 +2,8 @@
     session_start();
     
     if(isset($_SESSION['cart'])) {
-        echo("true");
+        echo TRUE;
     } else {
-        echo("false");
+        echo FALSE;
     }
 ?>

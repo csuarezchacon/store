@@ -1,5 +1,9 @@
 <?php
-    $cart = (object) array();
+    session_start();
+
+    $cart = (object) array(
+        'product' => array()
+    );
     
     $_SESSION['cart'] = $cart;
 
