@@ -1,7 +1,11 @@
 <?php
     session_start();
 
-    unset($_SESSION["cart"]);
+    if(isset($_SESSION['cart'])) {
+        unset($_SESSION["cart"]);
+        echo ("Carrito Eliminado");
+    } else {
+        echo ("Carrito no existe");
+    }
     
-    echo ("Carrito Eliminado");
 ?>

@@ -10,6 +10,7 @@
 				headers: "{'Content-Type': 'application/x-www-form-urlencoded'}" 
 			}).success(function(data, status, header, config) {
 				vm.cart = data;
+				alert(vm.cart);
 			});
 		};
 

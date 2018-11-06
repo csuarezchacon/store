@@ -1,8 +1,14 @@
 <?php
     session_start();
     
-    prodCnt = count($_SESSION['cart']->product);
-    array_push($_SESSION['cart']->product, 'nuevo producto ' + prodCnt);
+    if(isset($_SESSION['cart'])) {
+        
+        $prodCnt = count($_SESSION['cart']->product);
+        $product = "nuevo producto {$prodCnt}";
+        array_push($_SESSION['cart']->product, $product);
 
-    echo(json_encode($_SESSION['cart']));
+        echo(json_encode($product));
+    } else {
+        echo('Carrito no existe');
+    }
 ?>
