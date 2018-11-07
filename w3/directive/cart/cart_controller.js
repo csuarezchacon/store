@@ -1,7 +1,9 @@
 (function () {
 	angular.module('cart-module').controller('cartController', [ '$http', '$q', function($http, $q) {
 		var vm = this;
+
 		vm.cart = {};
+		getProduct();
 
 		vm.addProduct = function() {
 			$http({
@@ -9,8 +11,18 @@
 				method: "GET",
 				headers: "{'Content-Type': 'application/x-www-form-urlencoded'}" 
 			}).success(function(data, status, header, config) {
+				getProduct();
+				alert(data);
+			});
+		};
+
+		function getProduct() {
+			$http({
+				url: "model/utils/product_get.php",
+				method: "GET",
+				headers: "{'Content-Type': 'application/x-www-form-urlencoded'}" 
+			}).success(function(data, status, header, config) {
 				vm.cart = data;
-				alert(vm.cart);
 			});
 		};
 
@@ -53,6 +65,7 @@
 				method: "GET",
 				headers: "{'Content-Type': 'application/x-www-form-urlencoded'}" 
 			}).success(function(data, status, header, config) {
+				getProduct();
 				alert(data);
 			});
 		}
