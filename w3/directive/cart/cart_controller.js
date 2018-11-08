@@ -12,7 +12,6 @@
 				headers: "{'Content-Type': 'application/x-www-form-urlencoded'}" 
 			}).success(function(data, status, header, config) {
 				getProduct();
-				alert(data);
 			});
 		};
 
@@ -66,7 +65,6 @@
 				headers: "{'Content-Type': 'application/x-www-form-urlencoded'}" 
 			}).success(function(data, status, header, config) {
 				getProduct();
-				alert(data);
 			});
 		}
 	}]);
