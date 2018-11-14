@@ -17,12 +17,8 @@
 			});
 		};
 
-		vm.deleteCart = function() {
-			$http({
-				url: "model/utils/cart_unset.php",
-				method: "GET",
-				headers: "{'Content-Type': 'application/x-www-form-urlencoded'}" 
-			}).success(function(data, status, header, config) {
+		vm.itemPop = function(index) {
+			cartFactory.itemPop(index).then(function(rs) {
 				cartGet();
 			});
 		}

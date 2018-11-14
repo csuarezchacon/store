@@ -30,9 +30,23 @@
             return rs.promise;
         };
 
-        vm.itemPop = function(){ // Elimina Item
-            return;
-        };
+        vm.itemPop = function(in_index){ // Elimina Item
+            var rs = $q.defer();
+            var dataJson = $.param({
+                index: in_index
+            });
+            $http({
+				url: 'model/utils/product_pop.php',
+                method: 'POST',
+                data: dataJson,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).success(function(data, status, header, config) {
+				rs.resolve();
+			}).error(function(data, status, header, config) {
+                rs.reject();
+            });
+            return rs.promise;
+        }
 
         return {
             cartList: vm.cartList,
